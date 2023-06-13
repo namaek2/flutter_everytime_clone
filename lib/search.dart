@@ -34,16 +34,16 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     double keyboard = MediaQuery.of(context).viewInsets.bottom;
 
-    Post post4 = Post.clone(dataBase.post1);
-    Post post5 = Post.clone(dataBase.post2);
-    Post post6 = Post.clone(dataBase.post3);
-    Post post7 = Post.clone(dataBase.post1);
-    Post post8 = Post.clone(dataBase.post2);
-    Post post9 = Post.clone(dataBase.post3);
+    Post post4 = Post.clone(dataBase_free.post1);
+    Post post5 = Post.clone(dataBase_free.post2);
+    Post post6 = Post.clone(dataBase_free.post3);
+    Post post7 = Post.clone(dataBase_free.post1);
+    Post post8 = Post.clone(dataBase_free.post2);
+    Post post9 = Post.clone(dataBase_free.post3);
     List<Post> postSet = [
-      dataBase.post1,
-      dataBase.post2,
-      dataBase.post3,
+      dataBase_free.post1,
+      dataBase_free.post2,
+      dataBase_free.post3,
       post4,
       post5,
       post6,

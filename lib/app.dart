@@ -7,8 +7,8 @@ import 'login.dart';
 
 import 'User.dart';
 
-User user1 = User("ham", "1234", "김햄토리", "햄🐹", "경희대", "20");
-User user2 = User("purin", "1234", "김푸린", "푸린🤍", "경희대", "21");
+User user1 = User("ham", "1234", "김햄토리", "햄🐹", "전북대", "20");
+User user2 = User("jsh", "1234", "전승혁", "jsh", "전북대", "19");
 
 class MyApp extends StatelessWidget {
   @override
