@@ -9,252 +9,351 @@ class TimePage extends StatefulWidget {
 }
 
 class _TimePageState extends State<TimePage> {
-  List friends = ["고양이1", "고양이2", "고양이3", "고양이4", "고양이5"];
+  List<String> friends = ["편기현", "정종욱", "장재우", "정진홍", "김성찬",];
+  late List<bool> isFavoriteList;
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(70.0),
-          child: AppBar(
-            automaticallyImplyLeading: false,
-            flexibleSpace: Container(),
-            title: Padding(
-              padding: const EdgeInsets.only(left: 10.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(height: 10),
-                  Text(
-                    '2021년 2학기',
-                    style: TextStyle(color: Palette.everyRed, fontSize: 13),
-                  ),
-                  Text(
-                    '시간표 🍒',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 23),
-                  ),
-                ],
-              ),
-            ),
-            backgroundColor: Colors.white,
-            elevation: 0.0,
-            centerTitle: false,
-            actions: [
-              IconButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => TimePage()));
-                },
-                icon: Icon(
-                  CupertinoIcons.plus_square,
-                ),
-                color: Colors.black,
-              ),
-              IconButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => TimePage()));
-                },
-                icon: Icon(
-                  CupertinoIcons.gear,
-                ),
-                color: Colors.black,
-              ),
-              Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: IconButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => TimePage()));
-                    },
-                    icon: Icon(
-                      CupertinoIcons.list_bullet,
-                    ),
-                    color: Colors.black,
-                  ))
-            ],
-          ),
-        ),
-        body: SafeArea(
-            child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Center(
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 400,
-                          margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey.shade300),
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              myTable("월", Color(0xffe28b7b),
-                                  startnum: 27, endnum: 50, subject: "운영체제"),
-                              myTable("화", Color(0xff90cec1),
-                                  startnum: 42, endnum: 59, subject: "알고리즘"),
-                              myTable("수", Color(0xff90cec1),
-                                  startnum: 13, endnum: 20, subject: "알고리즘"),
-                              myTable(
-                                "목",
-                                Colors.grey.shade300,
-                              ),
-                              myTable("금", Color(0xffffc476),
-                                  startnum: 1, endnum: 29, subject: "자료구조"),
-                            ],
-                          ),
-                        ),
-                        Container(
-                            margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                            height: 60 + 60.0 * friends.length,
-                            width: 400,
-                            alignment: Alignment.topLeft,
-                            padding: EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10.0),
-                                border: Border.all(
-                                    color: Colors.grey.shade300, width: 1)),
-                            child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text('친구 시간표',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 20.0,
-                                                fontWeight: FontWeight.bold)),
-                                        Container(
-                                          child: IconButton(
-                                            onPressed: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          TimePage()));
-                                            },
-                                            icon: Icon(
-                                              CupertinoIcons.plus_square,
-                                            ),
-                                            color: Colors.black,
-                                          ),
-                                        )
-                                      ]),
-                                  SizedBox(
-                                    height: 8,
-                                  ),
-                                  friendName(friends[0]),
-                                  friendName(friends[1]),
-                                  friendName(friends[2]),
-                                  friendName(friends[3]),
-                                  friendName(friends[4]),
-                                ])),
-                        Container(
-                            margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                            height: 150,
-                            width: 400,
-                            alignment: Alignment.topLeft,
-                            padding: EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10.0),
-                                border: Border.all(
-                                    color: Colors.grey.shade300, width: 1)),
-                            child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text('학점계산기',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 20.0,
-                                                fontWeight: FontWeight.bold)),
-                                        Container(
-                                          child: IconButton(
-                                            onPressed: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          TimePage()));
-                                            },
-                                            icon: Icon(CupertinoIcons.pencil),
-                                            color: Colors.black,
-                                          ),
-                                        )
-                                      ]),
-                                  TextButton(
-                                      child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              "평균 학점  ",
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 17.0),
-                                            ),
-                                            Text(
-                                              "4.3",
-                                              style: TextStyle(
-                                                  color: Palette.everyRed,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 17.0),
-                                            ),
-                                            Text(
-                                              " / 4.3",
-                                              style: TextStyle(
-                                                  color: Colors.grey,
-                                                  fontSize: 15.0),
-                                            ),
-                                            Text(
-                                              "  취득 학점  ",
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 17.0),
-                                            ),
-                                            Text(
-                                              "140",
-                                              style: TextStyle(
-                                                  color: Palette.everyRed,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 17.0),
-                                            ),
-                                            Text(
-                                              " / 140",
-                                              style: TextStyle(
-                                                  color: Colors.grey,
-                                                  fontSize: 15.0),
-                                            ),
-                                          ]),
-                                      onPressed: () {},
-                                      style: TextButton.styleFrom(
-                                          padding: EdgeInsets.zero)),
-                                ])),
-                      ]),
-                ))));
+  void initState() {
+    super.initState();
+    isFavoriteList = List.generate(friends.length, (index) => false);
   }
-}
+    void toggleFavorite(int index){
+      setState((){
+        isFavoriteList[index] = !isFavoriteList[index];
+      });
+    }
+
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+          backgroundColor: Colors.white,
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(70.0),
+            child: AppBar(
+              automaticallyImplyLeading: false,
+              flexibleSpace: Container(),
+              title: Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(height: 10),
+                    Text(
+                      '2023년 1학기',
+                      style: TextStyle(color: Palette.everyRed, fontSize: 13),
+                    ),
+                    Text(
+                      '시간표',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 23),
+                    ),
+                  ],
+                ),
+              ),
+              backgroundColor: Colors.white,
+              elevation: 0.0,
+              centerTitle: false,
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => TimePage()));
+                  },
+                  icon: Icon(
+                    CupertinoIcons.plus_square,
+                  ),
+                  color: Colors.black,
+                ),
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => TimePage()));
+                  },
+                  icon: Icon(
+                    CupertinoIcons.gear,
+                  ),
+                  color: Colors.black,
+                ),
+                Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: IconButton(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => TimePage()));
+                      },
+                      icon: Icon(
+                        CupertinoIcons.list_bullet,
+                      ),
+                      color: Colors.black,
+                    ))
+              ],
+            ),
+          ),
+          body: SafeArea(
+              child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Center(
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 400,
+                            margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.grey.shade300),
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                myTable("월", Color(0xffe28b7b),
+                                    startnum: 27, endnum: 50, subject: "운영체제"),
+                                myTable("화", Color(0xff90cec1),
+                                    startnum: 42, endnum: 59, subject: "알고리즘"),
+                                myTable("수", Color(0xff90cec1),
+                                    startnum: 13, endnum: 20, subject: "알고리즘"),
+                                myTable(
+                                  "목",
+                                  Colors.grey.shade300,
+                                ),
+                                myTable("금", Color(0xffffc476),
+                                    startnum: 1, endnum: 29, subject: "자료구조"),
+                              ],
+                            ),
+                          ),
+                          Container(
+                              margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                              height: 60 + 60.0 * friends.length,
+                              width: 400,
+                              alignment: Alignment.topLeft,
+                              padding: EdgeInsets.all(20),
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  border: Border.all(
+                                      color: Colors.grey.shade300, width: 1)),
+                              child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text('친구 시간표',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 20.0,
+                                                  fontWeight: FontWeight.bold)),
+                                          Container(
+                                              child : Row(
+                                                children : [
+                                                  IconButton(
+                                                    onPressed: () {
+                                                      showDialog(context: context,
+                                                        builder: (BuildContext context) {
+                                                          return AlertDialog(
+                                                            title: Text('친구 즐겨찾기'),
+                                                            content: Container(
+                                                              width: 300,
+                                                              height: 200,
+                                                              child : Column(
+                                                              children : [
+                                                                for(int i=0;i<friends.length;i++)
+                                                                  Container(
+                                                                    child : Row(
+                                                                      children : [
+                                                                        Text(friends[i]),
+                                                                        IconButton(
+                                                                          onPressed: (){
+                                                                            toggleFavorite(i);
+                                                                            color: isFavoriteList[i]
+                                                                                ? Colors.yellow
+                                                                                : Colors.black;
+                                                                          },
+                                                                          icon: Icon(
+                                                                            CupertinoIcons.star_fill,
+                                                                          ),
+                                                                          color: Colors.black,
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                              ],
+                                                              ),
+                                                            ),
+                                                            actions: [
+                                                              FlatButton(
+                                                                child : Text('닫기'),
+                                                                onPressed: (){
+                                                                  Navigator.of(context).pop();
+                                                                },
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      );
+                                                    },
+                                                    icon: Icon(
+                                                      CupertinoIcons.star,
+                                                    ),
+                                                    color: Colors.black,
+                                                  ),
+                                                  IconButton(
+                                                    onPressed: () {
+                                                      Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  TimePage()));
+                                                    },
+                                                    icon: Icon(
+                                                      CupertinoIcons.plus_square,
+                                                    ),
+                                                    color: Colors.black,
+                                                  ),
+                                                ],
+                                              )
+                                          )
+
+                                        ]),
+                                    SizedBox(
+                                      height: 8,
+                                    ),
+                                    Column(
+                                      children : [
+                                        for(int i=0;i<friends.length;i++)
+                                          Container(
+                                            child : Row(
+                                              children : [
+                                                Text(friends[i]),
+                                                IconButton(
+                                                  onPressed: (){
+                                                    toggleFavorite(i);
+                                                    if(isFavoriteList[i]){
+                                                      for(int j = 0; j<friends.length; j++){
+                                                        if(!isFavoriteList[j]){
+                                                          if(i<j)
+                                                            break;
+                                                          String temp = friends[i];
+                                                          friends[i] = friends[j];
+                                                          friends[j] = temp;
+                                                          break;
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  icon: Icon(
+                                                    CupertinoIcons.star_fill,
+                                                  ),
+                                                  color: isFavoriteList[i]
+                                                      ? Colors.yellow
+                                                      : Colors.black,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                      ],
+                                    ),
+                                  ])),
+                          Container(
+                              margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                              height: 150,
+                              width: 400,
+                              alignment: Alignment.topLeft,
+                              padding: EdgeInsets.all(20),
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  border: Border.all(
+                                      color: Colors.grey.shade300, width: 1)),
+                              child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text('학점계산기',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 20.0,
+                                                  fontWeight: FontWeight.bold)),
+                                          Container(
+                                            child: IconButton(
+                                              onPressed: () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            TimePage()));
+                                              },
+                                              icon: Icon(CupertinoIcons.pencil),
+                                              color: Colors.black,
+                                            ),
+                                          )
+                                        ]),
+                                    TextButton(
+                                        child: Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "평균 학점  ",
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 17.0),
+                                              ),
+                                              Text(
+                                                "4.5",
+                                                style: TextStyle(
+                                                    color: Palette.everyRed,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 17.0),
+                                              ),
+                                              Text(
+                                                " / 4.5",
+                                                style: TextStyle(
+                                                    color: Colors.grey,
+                                                    fontSize: 15.0),
+                                              ),
+                                              Text(
+                                                "  취득 학점  ",
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 17.0),
+                                              ),
+                                              Text(
+                                                "140",
+                                                style: TextStyle(
+                                                    color: Palette.everyRed,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 17.0),
+                                              ),
+                                              Text(
+                                                " / 140",
+                                                style: TextStyle(
+                                                    color: Colors.grey,
+                                                    fontSize: 15.0),
+                                              ),
+                                            ]),
+                                        onPressed: () {},
+                                        style: TextButton.styleFrom(
+                                            padding: EdgeInsets.zero)),
+                                  ])),
+                        ]),
+                  ))));
+    }
+  }
+
 
 Widget friendName(String name) {
   return TextButton(
