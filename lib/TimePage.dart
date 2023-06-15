@@ -11,17 +11,56 @@ class TimePage extends StatefulWidget {
 class _TimePageState extends State<TimePage> {
   List<String> friends = ["편기현", "정종욱", "장재우", "정진홍", "김성찬",];
   late List<bool> isFavoriteList;
+  late List<Widget> friendsRowWidgets;
 
   @override
   void initState() {
     super.initState();
     isFavoriteList = List.generate(friends.length, (index) => false);
+    friendsRowWidgets = List.generate(friends.length, (index) => buildFriendRow(index));
   }
-    void toggleFavorite(int index){
-      setState((){
-        isFavoriteList[index] = !isFavoriteList[index];
-      });
-    }
+
+  void toggleFavorite(int index){
+    setState((){
+      isFavoriteList[index] = !isFavoriteList[index];
+      if (isFavoriteList[index]) {
+        for (int j = 0; j < friends.length; j++) {
+          if (!isFavoriteList[j]) {
+            if (index < j) break;
+            String temp = friends[index];
+            friends[index] = friends[j];
+            friends[j] = temp;
+            bool tempFavorite = isFavoriteList[index];
+            isFavoriteList[index] = isFavoriteList[j];
+            isFavoriteList[j] = tempFavorite;
+            Widget tempWidget = friendsRowWidgets[index];
+            friendsRowWidgets[index] = friendsRowWidgets[j];
+            friendsRowWidgets[j] = tempWidget;
+            break;
+          }
+        }
+      }
+    });
+  }
+
+  Widget buildFriendRow(int index) {
+    return Container(
+      child: Row(
+        children: [
+          Text(friends[index]),
+          IconButton(
+            onPressed: () {
+              toggleFavorite(index);
+            },
+            icon: Icon(
+              CupertinoIcons.star_fill,
+            ),
+            color: isFavoriteList[index] ? Colors.yellow : Colors.black,
+          ),
+        ],
+      ),
+    );
+  }
 
     @override
     Widget build(BuildContext context) {
@@ -136,20 +175,24 @@ class _TimePageState extends State<TimePage> {
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(10.0),
                                   border: Border.all(
-                                      color: Colors.grey.shade300, width: 1)),
+                                      color: Colors.grey.shade300, width: 1
+                                  ),
+                              ),
                               child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text('친구 시간표',
+                                          Text(
+                                              '친구 시간표',
                                               style: TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold)),
+                                                  fontWeight: FontWeight.bold,
+                                              ),
+                                          ),
                                           Container(
                                               child : Row(
                                                 children : [
@@ -163,28 +206,27 @@ class _TimePageState extends State<TimePage> {
                                                               width: 300,
                                                               height: 200,
                                                               child : Column(
-                                                              children : [
-                                                                for(int i=0;i<friends.length;i++)
-                                                                  Container(
-                                                                    child : Row(
-                                                                      children : [
-                                                                        Text(friends[i]),
-                                                                        IconButton(
-                                                                          onPressed: (){
-                                                                            toggleFavorite(i);
+                                                                children : [
+                                                                  for(int i=0; i<friends.length; i++)
+                                                                    Container(
+                                                                      child: Row(
+                                                                        children: [
+                                                                          Text(friends[i]),
+                                                                          IconButton(
+                                                                            onPressed: () {
+                                                                              toggleFavorite(i);
+                                                                            },
+                                                                            icon: Icon(
+                                                                              CupertinoIcons.star_fill,
+                                                                            ),
                                                                             color: isFavoriteList[i]
                                                                                 ? Colors.yellow
-                                                                                : Colors.black;
-                                                                          },
-                                                                          icon: Icon(
-                                                                            CupertinoIcons.star_fill,
+                                                                                : Colors.black,
                                                                           ),
-                                                                          color: Colors.black,
-                                                                        ),
-                                                                      ],
+                                                                        ],
+                                                                      ),
                                                                     ),
-                                                                  ),
-                                                              ],
+                                                                ],
                                                               ),
                                                             ),
                                                             actions: [
@@ -209,8 +251,9 @@ class _TimePageState extends State<TimePage> {
                                                       Navigator.push(
                                                           context,
                                                           MaterialPageRoute(
-                                                              builder: (context) =>
-                                                                  TimePage()));
+                                                              builder: (context) => TimePage(),
+                                                          ),
+                                                      );
                                                     },
                                                     icon: Icon(
                                                       CupertinoIcons.plus_square,
@@ -218,35 +261,23 @@ class _TimePageState extends State<TimePage> {
                                                     color: Colors.black,
                                                   ),
                                                 ],
-                                              )
-                                          )
-
-                                        ]),
+                                              ),
+                                          ),
+                                        ],
+                                    ),
                                     SizedBox(
                                       height: 8,
                                     ),
                                     Column(
                                       children : [
-                                        for(int i=0;i<friends.length;i++)
+                                        for(int i=0; i<friends.length; i++)
                                           Container(
-                                            child : Row(
-                                              children : [
+                                            child: Row(
+                                              children: [
                                                 Text(friends[i]),
                                                 IconButton(
-                                                  onPressed: (){
+                                                  onPressed: () {
                                                     toggleFavorite(i);
-                                                    if(isFavoriteList[i]){
-                                                      for(int j = 0; j<friends.length; j++){
-                                                        if(!isFavoriteList[j]){
-                                                          if(i<j)
-                                                            break;
-                                                          String temp = friends[i];
-                                                          friends[i] = friends[j];
-                                                          friends[j] = temp;
-                                                          break;
-                                                        }
-                                                      }
-                                                    }
                                                   },
                                                   icon: Icon(
                                                     CupertinoIcons.star_fill,
@@ -260,7 +291,9 @@ class _TimePageState extends State<TimePage> {
                                           ),
                                       ],
                                     ),
-                                  ])),
+                                  ],
+                              ),
+                          ),
                           Container(
                               margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
                               height: 150,
