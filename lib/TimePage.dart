@@ -99,31 +99,123 @@ class _TimePageState extends State<TimePage> {
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
+
                         children: [
-                          Container(
-                            width: 400,
-                            margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade300),
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Center(
                             child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+
                               children: [
-                                myTable("월", Color(0xffe28b7b),
-                                    startnum: 27, endnum: 50, subject: "운영체제"),
-                                myTable("화", Color(0xff90cec1),
-                                    startnum: 42, endnum: 59, subject: "알고리즘"),
-                                myTable("수", Color(0xff90cec1),
-                                    startnum: 13, endnum: 20, subject: "알고리즘"),
-                                myTable(
-                                  "목",
-                                  Colors.grey.shade300,
+                                Container(
+                                  width: 400,
+                                  margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.grey.shade300),
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    myTable("월", Color(0xffe28b7b),
+                                      startnum: 27, endnum: 50, subject: "운영체제"),
+                                    myTable("화", Color(0xff90cec1),
+                                      startnum: 42, endnum: 59, subject: "알고리즘"),
+                                    myTable("수", Color(0xff90cec1),
+                                      startnum: 13, endnum: 20, subject: "알고리즘"),
+                                    myTable("목", Colors.grey.shade300,),
+                                    myTable("금", Color(0xffffc476),
+                                      startnum: 1, endnum: 29, subject: "자료구조"),
+
+
+                                  ],
                                 ),
-                                myTable("금", Color(0xffffc476),
-                                    startnum: 1, endnum: 29, subject: "자료구조"),
+
+                              ),
+                                Container(
+                                  width: 400,
+                                  margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.grey.shade300),
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      myTable("월", Color(0xff90cec1),
+                                          startnum: 27, endnum: 50, subject: "운영체제"),
+                                      myTable("화", Color(0xffe28b7b),
+                                          startnum: 1, endnum: 20, subject: "알고리즘"),
+                                      myTable("수", Color(0xff90cec1),
+                                          startnum: 13, endnum: 20, subject: "알고리즘"),
+                                      myTable("목", Colors.grey.shade300,),
+                                      myTable("금", Color(0xffffc476),
+                                          startnum: 1, endnum: 29, subject: "자료구조"),
+
+
+                                    ],
+                                  ),
+
+                                ),
+                                Container(
+                                  width: 400,
+                                  margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.grey.shade300),
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      myTable("월", Color(0xff90cec1),
+                                          startnum: 1, endnum: 50, subject: "운영체제"),
+                                      myTable("화", Color(0xff90cec1),
+                                          startnum: 50, endnum: 59, subject: "알고리즘"),
+                                      myTable("수", Color(0xffe28b7b),
+                                          startnum: 13, endnum: 20, subject: "알고리즘"),
+                                      myTable("목", Colors.grey.shade300,),
+                                      myTable("금", Color(0xffffc476),
+                                          startnum: 1, endnum: 29, subject: "자료구조"),
+
+
+                                    ],
+                                  ),
+
+                                ),
+
+                                Container(
+                                  width: 400,
+                                  margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.grey.shade300),
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      myTable("월", Color(0xff90cec1),
+                                          startnum: 1, endnum: 50, subject: "운영체제"),
+                                      myTable("화", Colors.grey.shade300,),
+                                      myTable("수", Color(0xffe28b7b),
+                                          startnum: 13, endnum: 20, subject: "알고리즘"),
+                                      myTable("목", Colors.grey.shade300,),
+                                      myTable("금", Colors.grey.shade300,),
+
+
+                                    ],
+                                  ),
+
+                                ),
+
                               ],
+                            ),
+
                             ),
                           ),
                           Container(
