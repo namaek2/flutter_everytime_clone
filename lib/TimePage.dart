@@ -12,6 +12,26 @@ class _TimePageState extends State<TimePage> {
   List<String> friends = ["편기현", "정종욱", "장재우", "정진홍", "김성찬",];
   late List<bool> isFavoriteList;
 
+  void _showAlertDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Alert'),
+          content: Text('시간표 추가!'),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -101,12 +121,16 @@ class _TimePageState extends State<TimePage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
 
                       children: [
-                        
+
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                             child: Row(
                               children: [
-                                Container(
+                                GestureDetector(
+                                  onLongPress: () {
+                                    _showAlertDialog(context);
+                                    },
+                                child: Container(
                                   width: 400,
                                   margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
                                   decoration: BoxDecoration(
@@ -129,8 +153,14 @@ class _TimePageState extends State<TimePage> {
                                     ],
                                   ),
                                 ),
+                                ),
 
-                                Container(
+
+                  GestureDetector(
+                    onLongPress: () {
+                      _showAlertDialog(context);
+                    },
+                    child: Container(
                                   width: 400,
                                   margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
                                   decoration: BoxDecoration(
@@ -153,8 +183,14 @@ class _TimePageState extends State<TimePage> {
                                     ],
                                   ),
                                 ),
+                  ),
 
-                                Container(
+
+                  GestureDetector(
+                    onLongPress: () {
+                      _showAlertDialog(context);
+                    },
+                    child: Container(
                                   width: 400,
                                   margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
                                   decoration: BoxDecoration(
@@ -177,8 +213,14 @@ class _TimePageState extends State<TimePage> {
                                     ],
                                   ),
                                 ),
+                  ),
 
-                                Container(
+
+                  GestureDetector(
+                    onLongPress: () {
+                      _showAlertDialog(context);
+                    },
+                    child: Container(
                                   width: 400,
                                   margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
                                   decoration: BoxDecoration(
@@ -199,8 +241,14 @@ class _TimePageState extends State<TimePage> {
                                     ],
                                   ),
                                 ),
+                  ),
 
-                                Container(
+
+                  GestureDetector(
+                    onLongPress: () {
+                      _showAlertDialog(context);
+                    },
+                    child: Container(
                                   width: 400,
                                   margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
                                   decoration: BoxDecoration(
@@ -221,6 +269,7 @@ class _TimePageState extends State<TimePage> {
                                     ],
                                   ),
                                 ),
+                  ),
 
                               ],
                             ),
