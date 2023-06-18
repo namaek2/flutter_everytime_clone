@@ -4,11 +4,16 @@ import 'home_cubit.dart';
 import 'mainpage.dart';
 import 'ListPage.dart';
 import 'alertpage.dart';
-import 'snspage.dart';
+import 'profile.dart';
 import 'timepage.dart';
 import 'package:flutter/cupertino.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, int>(
@@ -56,8 +61,8 @@ class HomePage extends StatelessWidget {
                   label: 'Alert',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(CupertinoIcons.location, size: 25),
-                  label: 'Campic',
+                  icon: Icon(CupertinoIcons.gear, size: 25),
+                  label: 'profile',
                 ),
               ],
             ),
@@ -83,7 +88,7 @@ class HomePage extends StatelessWidget {
         context.read<HomeCubit>().getAlert();
         break;
       case 4:
-        context.read<HomeCubit>().getCampic();
+        context.read<HomeCubit>().getprofile();
         break;
     }
   }
@@ -99,7 +104,7 @@ class HomePage extends StatelessWidget {
       case 3:
         return AlertPage();
       case 4:
-        return CampicPage();
+        return Profile();
       default:
         return MainPage();
     }

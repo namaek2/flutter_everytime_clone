@@ -8,6 +8,6 @@ class HomeCubit extends Cubit<int> {
   void getTime() => emit(1);
   void getList() => emit(2);
   void getAlert() => emit(3);
-  void getCampic() => emit(4);
+  void getprofile() => emit(4);
   void getLogin() => emit(5);
 }
