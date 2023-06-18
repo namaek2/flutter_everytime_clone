@@ -201,7 +201,7 @@ class _MainPageState extends State<MainPage> {
                                 height: 8,
                               ),
                               favoritePost(
-                                  context, '자유게시판', '너네는 팀플하지마라'),
+                                  context, '자유게시판', '테스트'),
                               favoritePost(context, '정보게시판', '수강신청 기간 안내'),
                               favoritePost(
                                   context, '홍보게시판', '컴공동아리 HCI 부원 모집'),
@@ -238,10 +238,10 @@ class _MainPageState extends State<MainPage> {
                               SizedBox(
                                 height: 5,
                               ),
-                              popularPost(context, '전승혁 혼자하는 팀프로젝트 너무 행보케...',
-                                  '★★★★★카톡 읽씹하고 절대 안모이는 팀플 너무 힘들다 살려줘....', '자유게시판', '9999', '6'),
-                              popularPost(context, '왜 드랍안하냐고!!!',
-                                  '찔리는 17학번, 18학번들아!!', '자유게시판', '241', '20'),
+                              popularPost(context, '테스트1',
+                                  '집에갈래', '자유게시판', '9999', '6'),
+                              popularPost(context, '삶은계란',
+                                  '먹고싶다', '자유게시판', '241', '20'),
                             ])),
                   ),
                 ),
